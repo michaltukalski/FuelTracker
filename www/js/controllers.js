@@ -1,8 +1,13 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('FormCtrl', function($scope, Refuelings) {
+  $scope.count = function(date, price, mileage, quantity) {
+    var usage = quantity/(mileage - Refuelings.getLastMileage());
+    Refuelings.add(date, price, mileage, quantity, usage);
+  }
+})
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('HistoryCtrl', function($scope, Refuelings) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -11,17 +16,13 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.refuelings = Refuelings.all();
+  $scope.remove = function(refuel) {
+    Refuelings.remove(refuel);
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
-
-.controller('AccountCtrl', function($scope) {
+.controller('StatsCtrl', function($scope) {
   $scope.settings = {
     enableFriends: true
   };

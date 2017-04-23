@@ -1,0 +1,22 @@
+<ion-view view-title="Form">
+  <ion-content class="padding">
+    <label class="item item-input">
+      <span class="input-label">Date</span>
+      <input type="date" ng-model="date">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Przebieg</span>
+      <input type="text" ng-model="mileage">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Ilośc</span>
+      <input type="text" ng-model="quantity">
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Cena</span>
+      <input type="text" ng-model="price">
+    </label>
+    <button ion-button class="buton button-block button-positive" ng-click="count(date, price, mileage, quantity)">Przelicz</button>
+    {{mileage}}
+  </ion-content>
+</ion-view>
